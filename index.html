@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PersonFinder — search people by birthday range via FakerAPI" />
+  <title>PersonFinder</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/layout.css" />
+  <link rel="stylesheet" href="src/styles/components/search-panel.css" />
+  <link rel="stylesheet" href="src/styles/components/controls-bar.css" />
+  <link rel="stylesheet" href="src/styles/components/person-card.css" />
+  <link rel="stylesheet" href="src/styles/components/skeleton.css" />
+  <link rel="stylesheet" href="src/styles/components/states.css" />
+  <link rel="stylesheet" href="src/styles/responsive.css" />
+</head>
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <div class="logo-group">
+        <span class="logo-eyebrow">// birthday range search</span>
+        <h1 class="site-title">Person<em>Finder</em></h1>
+      </div>
+      <div class="header-meta">
+        fakerapi.it / v2 / persons<br />
+        <span id="clock" aria-label="Current time">—</span>
+      </div>
+    </header>
+
+    <section class="search-panel" aria-label="Search parameters">
+      <div class="panel-title">Search parameters</div>
+
+      <div class="form-row">
+        <div>
+          <div class="field">
+            <label for="date-start">From birthday</label>
+            <input type="date" id="date-start" autocomplete="off" />
+          </div>
+          <p class="field-hint" id="hint-start" role="alert" aria-live="polite"></p>
+        </div>
+
+        <div>
+          <div class="field">
+            <label for="date-end">To birthday</label>
+            <input type="date" id="date-end" autocomplete="off" />
+          </div>
+          <p class="field-hint" id="hint-end" role="alert" aria-live="polite"></p>
+        </div>
+
+        <button class="btn-search" id="btn-search" type="button">
+          <span class="btn-spinner" aria-hidden="true"></span>
+          <span class="btn-label">Search →</span>
+        </button>
+      </div>
+
+      <div class="options-row">
+        <div class="field-inline">
+          <label for="qty">Quantity</label>
+          <select id="qty">
+            <option value="5">5 results</option>
+            <option value="10" selected>10 results</option>
+            <option value="20">20 results</option>
+            <option value="50">50 results</option>
+            <option value="100">100 results</option>
+          </select>
+        </div>
+        <div class="field-inline">
+          <label for="gender-select">Gender</label>
+          <select id="gender-select">
+            <option value="">Any gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field-inline">
+          <label for="locale-select">Locale</label>
+          <select id="locale-select">
+            <option value="en_US">English (US)</option>
+            <option value="fr_FR">French (FR)</option>
+            <option value="de_DE">German (DE)</option>
+            <option value="es_ES">Spanish (ES)</option>
+            <option value="uk_UA">Ukrainian (UA)</option>
+            <option value="pl_PL">Polish (PL)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div class="controls-bar" id="controls-bar" aria-hidden="true">
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="sort-group" role="group" aria-label="Sort results">
+        <span class="sort-label">Sort</span>
+        <button class="sort-btn active" data-sort="name"     aria-pressed="true">Name</button>
+        <button class="sort-btn"        data-sort="birthday" aria-pressed="false">Birthday</button>
+        <button class="sort-btn"        data-sort="gender"   aria-pressed="false">Gender</button>
+      </div>
+      <input
+        class="filter-input"
+        id="filter-input"
+        type="search"
+        placeholder="Filter by name or email…"
+        aria-label="Filter results"
+      />
+    </div>
+
+    <main id="output" aria-live="polite" aria-label="Search results">
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-brand">PersonFinder — Vanilla JS</span>
+      <span class="footer-api">
+        Powered by <a href="https://fakerapi.it" target="_blank" rel="noopener">fakerapi.it</a>
+      </span>
+    </footer>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

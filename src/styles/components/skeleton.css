@@ -1,0 +1,51 @@
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.skeleton-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.skeleton-header__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sk {
+  background: linear-gradient(
+    90deg,
+    var(--surface2) 25%,
+    var(--border)   50%,
+    var(--surface2) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--r-sm);
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.sk--circle  { border-radius: 50%; width: 48px; height: 48px; flex-shrink: 0; }
+.sk--line    { height: 14px; }
+.sk--line-sm { height: 11px; }
+.sk--divider { height: 1px; }
+
+.skeleton-card:nth-child(2) .sk { animation-delay: 0.1s; }
+.skeleton-card:nth-child(3) .sk { animation-delay: 0.2s; }
+.skeleton-card:nth-child(4) .sk { animation-delay: 0.15s; }
+.skeleton-card:nth-child(5) .sk { animation-delay: 0.05s; }
+.skeleton-card:nth-child(6) .sk { animation-delay: 0.25s; }

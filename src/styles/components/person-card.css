@@ -1,0 +1,171 @@
+.person-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s var(--ease-spring),
+    border-color 0.2s,
+    box-shadow 0.25s;
+  animation: card-in 0.5s var(--ease-out) both;
+}
+
+.person-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.person-card[data-gender="male"]::before {
+  background: linear-gradient(90deg, var(--male), transparent);
+}
+
+.person-card[data-gender="female"]::before {
+  background: linear-gradient(90deg, var(--female), transparent);
+}
+
+.person-card[data-gender="other"]::before {
+  background: linear-gradient(90deg, var(--other), transparent);
+}
+
+.person-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hi);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.person-card:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.person-card[data-gender="male"]   .card-avatar { background: rgba(96,  165, 250, 0.12); color: var(--male);   }
+.person-card[data-gender="female"] .card-avatar { background: rgba(244, 114, 182, 0.12); color: var(--female); }
+.person-card[data-gender="other"]  .card-avatar { background: rgba(167, 139, 250, 0.12); color: var(--other);  }
+
+.card-name-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-birthday {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.age-chip {
+  display: inline-block;
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--accent3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.gender-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.person-card[data-gender="male"]   .gender-badge { background: rgba(96,  165, 250, 0.12); color: var(--male);   }
+.person-card[data-gender="female"] .gender-badge { background: rgba(244, 114, 182, 0.12); color: var(--female); }
+.person-card[data-gender="other"]  .gender-badge { background: rgba(167, 139, 250, 0.12); color: var(--other);  }
+
+.card-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.field-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.field-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  width: 52px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.field-val {
+  color: var(--text-mid);
+  font-size: 13px;
+  word-break: break-all;
+  line-height: 1.45;
+  transition: color 0.15s;
+}
