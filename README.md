@@ -1,5 +1,7 @@
 # PersonFinder
 
+[![Preview](assets/preview-thumbnail.png)](https://www.youtube.com/watch?v=ogR4ruepWJo)
+
 > Search people by birthday range using the [fakerapi.it](https://fakerapi.it) API.
 
 ## Project structure
